@@ -2,6 +2,7 @@ package com.chilangolabs.buddis.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +30,13 @@ public class AdapterListHome extends BaseAdapter {
     private Context context;
     private int layoutResourceId;
     private ArrayList<ItemListHome> data = new ArrayList<>();
+    Typeface tp;
 
     public AdapterListHome(Context context, int layoutResourceId, ArrayList<ItemListHome> data) {
         this.context = context;
         this.layoutResourceId = layoutResourceId;
         this.data = data;
+        tp = Typeface.createFromAsset(context.getAssets(), "fonts/FontAwesome.otf");
     }
 
     @Override
@@ -78,6 +81,7 @@ public class AdapterListHome extends BaseAdapter {
         ItemListHome item = (ItemListHome) data.get(position);
         try {
             holder.txtCode.setText(item.getJson().getString("icon"));
+            holder.txtCode.setTypeface(tp);
             holder.txtName.setText(item.getJson().getString("title"));
             final JSONArray jsonProfesionalsAr = item.getJson().getJSONArray("users");
 
@@ -87,8 +91,11 @@ public class AdapterListHome extends BaseAdapter {
                 ImageView imgProfesional = (ImageView) profesionalItem.findViewById(R.id.imgProfesional);
                 txtProfesional.setText(jsonProfesionalsAr.getJSONObject(i).getString("name"));
                 Picasso.with(context).load("http://buddies.chilangolabs.com" + jsonProfesionalsAr.getJSONObject(i).getString("img")).placeholder(R.drawable.mario).error(R.drawable.mario);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                layoutParams.setMargins(10, 0, 10, 0);
 //                imgProfesional.setImageResource(R.drawable.mario);
-                holder.horizontalListView.addView(profesionalItem);
+                holder.horizontalListView.addView(profesionalItem, layoutParams);
                 final int pos = i;
                 holder.horizontalListView.getChildAt(i).setOnClickListener(new View.OnClickListener() {
                     @Override

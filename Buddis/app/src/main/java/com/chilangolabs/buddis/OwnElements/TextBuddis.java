@@ -28,8 +28,8 @@ public class TextBuddis extends TextView {
     }
 
     private void initStyle() {
-//        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/myriad.OTF");
-//        this.setTypeface(tf);
+        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Roboto-Regular.ttf");
+        this.setTypeface(tf);
     }
 
 }
