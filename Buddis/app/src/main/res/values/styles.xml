@@ -23,4 +23,12 @@
         <item name="android:textColor">@color/icons</item>
     </style>
 
+    <style name="MyNavigationDrawerTheme" parent="MaterialNavigationDrawerTheme.Light.DarkActionBar.TranslucentKitKatStatusBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="singleAccount">true</item>
+        <item name="rippleBackport">true</item>
+    </style>
+
 </resources>

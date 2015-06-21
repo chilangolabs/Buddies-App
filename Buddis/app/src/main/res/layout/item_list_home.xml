@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <com.chilangolabs.buddis.OwnElements.TextBuddis
+            android:id="@+id/txtItemHomeCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="O"
+            android:textColor="@color/primary"
+            android:textSize="25sp" />
+
+        <com.chilangolabs.buddis.OwnElements.TextBuddis
+            android:id="@+id/txtItemHomeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/hello_world"
+            android:textColor="@color/primary_text"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <com.devsmart.android.ui.HorizontialListView
+        android:id="@+id/listviewItemHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

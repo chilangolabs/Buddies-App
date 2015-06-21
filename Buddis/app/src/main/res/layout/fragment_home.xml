@@ -1,0 +1,82 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chilangolabs.buddis.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/linearHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/hello_world"
+                android:scaleType="centerCrop"
+                android:src="@drawable/amigos" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20dp"
+                android:background="@drawable/backgroundwhiterounded"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp">
+
+                <ImageView
+                    android:id="@+id/imgHomeFind"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@drawable/lupa" />
+
+                <EditText
+                    android:id="@+id/edtxHomeFind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/howWeCantHelpYou"
+                    android:inputType="text"
+                    android:textColor="@color/primary_text" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@drawable/mic" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/listHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
+</FrameLayout>
