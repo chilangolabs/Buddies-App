@@ -14,8 +14,8 @@ public class DrawerActivity extends MaterialNavigationDrawer {
         this.addAccount(account);
         this.addSection(newSection("Explora", new HomeFragment()));
         this.addSection(newSection("Perfil", new UserProfileFragment()));
-        this.addSection(newSection("Home", new HomeFragment()));
-        this.addSection(newSection("Home", new HomeFragment()));
+        this.addSection(newSection("Validar SMS", new ValidationActivity()));
+        this.addSection(newSection("Cerrar Sesion", new ExitFragment()));
 
         this.getSupportActionBar().setCustomView(R.layout.actionbarlogo);
         this.getSupportActionBar().setDisplayShowCustomEnabled(true);

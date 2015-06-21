@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.chilangolabs.buddis" >
+    package="com.chilangolabs.buddis">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icono"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppThemeNoActionBar" >
+            android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +22,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppThemeNoActionBar" >
-        </activity>
+            android:theme="@style/AppThemeNoActionBar"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -37,8 +36,7 @@
         <activity
             android:name=".DrawerActivity"
             android:label="@string/title_activity_drawer"
-            android:theme="@style/MyNavigationDrawerTheme">
-        </activity>
+            android:theme="@style/MyNavigationDrawerTheme"></activity>
     </application>
 
 </manifest>

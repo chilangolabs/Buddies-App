@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -15,10 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.chilangolabs.buddis.Adapters.AdapterListHome;
-import com.chilangolabs.buddis.Adapters.AdapterProfesional;
 import com.chilangolabs.buddis.Entitys.ItemListHome;
-import com.chilangolabs.buddis.Entitys.ItemProfesionals;
-import com.devsmart.android.ui.HorizontalListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +36,9 @@ public class HomeFragment extends Fragment {
     RequestQueue rq;
     JsonObjectRequest jsonRequest;
 
+    MaterialDialog.Builder progressDialogBuild;
+    MaterialDialog progressDialog;
+
     public HomeFragment() {
     }
 
@@ -51,6 +53,13 @@ public class HomeFragment extends Fragment {
 
         rq = Volley.newRequestQueue(getActivity());
 
+        progressDialogBuild = new MaterialDialog.Builder(getActivity())
+                .content(R.string.wait_dialog)
+                .cancelable(false)
+                .progress(true, 0);
+
+        progressDialog = progressDialogBuild.build();
+
         makePetition();
 
         return view;
@@ -58,10 +67,13 @@ public class HomeFragment extends Fragment {
 
     private void makePetition() {
 
+        progressDialog.show();
 
         jsonRequest = new JsonObjectRequest(Request.Method.GET, "http://buddies.chilangolabs.com/explore", new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+
+                progressDialog.dismiss();
 
                 final ArrayList<ItemListHome> item = new ArrayList<>();
                 try {
@@ -79,7 +91,8 @@ public class HomeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(), "Algo fallo, intenta de nuevo", Toast.LENGTH_SHORT).show();
             }
         });
 
