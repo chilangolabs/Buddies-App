@@ -53,7 +53,23 @@ public class ValidationActivity extends Fragment {
         btnValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makepetitio(edtxSms.getText().toString());
+
+//                makepetitio(edtxSms.getText().toString());
+
+                new MaterialDialog.Builder(getActivity())
+                        .title("Ingresa el codigo de verificacion")
+                        .customView(R.layout.dialog_sms, true)
+                        .positiveText("Ok")
+                        .callback(new MaterialDialog.ButtonCallback() {
+                            @Override
+                            public void onPositive(MaterialDialog dialog) {
+                                super.onPositive(dialog);
+//                                EditText validate = (EditText) dialog.findViewById(R.id.edtxDialog);
+//                                makeValidation(validate.getText().toString());
+                                Toast.makeText(getActivity(), "Numero telefonico validado", Toast.LENGTH_LONG).show();
+                            }
+                        }).build().show();
+
             }
         });
 
