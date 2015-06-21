@@ -81,7 +81,7 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 try {
                     txtProfileName.setText(response.getString("displayName"));
                     txtProfileExperience.setText(response.getJSONArray("talents").get(0).toString());
-                    Picasso.with(ProfileDetailActivity.this).load(response.getString("fbPicture")).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(view);
+                    Picasso.with(ProfileDetailActivity.this).load("http://buddies.chilangolabs.com" + response.getString("fbPicture")).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(view);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
