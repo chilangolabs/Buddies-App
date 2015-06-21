@@ -1,37 +1,62 @@
 package com.chilangolabs.buddis;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private static final long SPLASH_SCREEN_DELAY = 100;
+    SharedPreferences app_preference;
+    SharedPreferences.Editor editor;
+    boolean status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        app_preference = getSharedPreferences(getString(R.string.preferences), Context.MODE_PRIVATE);
+        status = app_preference.getBoolean(getString(R.string.status_enroll), true);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash, menu);
-        return true;
+    protected void onResume() {
+        super.onResume();
+
+        AppEventsLogger.activateApp(this);
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                init();
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, SPLASH_SCREEN_DELAY);
+    }
+
+    private void init() {
+
+        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+//        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        finish();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    protected void onPause() {
+        super.onPause();
+        AppEventsLogger.deactivateApp(this);
     }
+
 }
