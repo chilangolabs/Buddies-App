@@ -2,6 +2,7 @@ package com.chilangolabs.buddis.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chilangolabs.buddis.Entitys.ItemListHome;
 import com.chilangolabs.buddis.Entitys.ItemProfesionals;
+import com.chilangolabs.buddis.ProfileDetailActivity;
 import com.chilangolabs.buddis.R;
 import com.squareup.picasso.Picasso;
 
@@ -101,7 +102,8 @@ public class AdapterListHome extends BaseAdapter {
                     @Override
                     public void onClick(View view) {
                         try {
-                            Toast.makeText(context, jsonProfesionalsAr.getJSONObject(pos).getString("id"), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context, jsonProfesionalsAr.getJSONObject(pos).getString("id"), Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(context, ProfileDetailActivity.class).putExtra("id", jsonProfesionalsAr.getJSONObject(pos).getString("id")));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
