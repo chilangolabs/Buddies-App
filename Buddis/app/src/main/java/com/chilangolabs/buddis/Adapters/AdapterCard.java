@@ -69,8 +69,8 @@ public class AdapterCard extends BaseAdapter {
         ItemCard item = data.get(position);
 
         holder.txtJob.setText(item.getTitle());
-//        if (item.getImg().isEmpty()) {
-            Picasso.with(context).load(item.getImgInt()).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(holder.imgJob);
+//        if (item.getImg() != null) {
+        Picasso.with(context).load(item.getImgInt()).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(holder.imgJob);
 //        } else {
 //            Picasso.with(context).load("http://buddies.chilangolabs.com" + item.getImg()).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(holder.imgJob);
 //        }

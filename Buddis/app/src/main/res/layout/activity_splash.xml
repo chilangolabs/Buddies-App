@@ -15,17 +15,17 @@
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/hello_world"
-        android:src="@drawable/abc_btn_check_to_on_mtrl_015"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true" />
 
-    <com.chilangolabs.buddis.OwnElements.TextBuddis
-        android:id="@+id/txtSplashBuddies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/buddies"
-        android:textColor="@color/icons"
-        android:textSize="60sp"
-        android:layout_below="@+id/imgSplashIcon"
-        android:layout_centerHorizontal="true" />
+    <!--<com.chilangolabs.buddis.OwnElements.TextBuddis-->
+        <!--android:id="@+id/txtSplashBuddies"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/buddies"-->
+        <!--android:textColor="@color/icons"-->
+        <!--android:textSize="60sp"-->
+        <!--android:layout_below="@+id/imgSplashIcon"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
 </RelativeLayout>
