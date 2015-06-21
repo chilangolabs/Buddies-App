@@ -12,8 +12,8 @@ public class DrawerActivity extends MaterialNavigationDrawer {
 
         MaterialAccount account = new MaterialAccount(this.getResources(), "Aldo Alvarez", "", R.drawable.imagetest, R.drawable.imagetest);
         this.addAccount(account);
-        this.addSection(newSection("Home", new HomeFragment()));
-        this.addSection(newSection("Home", new HomeFragment()));
+        this.addSection(newSection("Explora", new HomeFragment()));
+        this.addSection(newSection("Perfil", new UserProfileFragment()));
         this.addSection(newSection("Home", new HomeFragment()));
         this.addSection(newSection("Home", new HomeFragment()));
 

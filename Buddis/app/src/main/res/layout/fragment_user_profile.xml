@@ -1,0 +1,94 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chilangolabs.buddis.UserProfileFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/hello_world"
+                android:scaleType="centerCrop"
+                android:src="@drawable/aldoblur" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="vertical">
+
+                <com.chilangolabs.buddis.OwnElements.TextBuddis
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aldo Alvarez"
+                    android:textColor="@color/icons"
+                    android:textSize="20sp" />
+
+                <com.chilangolabs.buddis.OwnElements.TextBuddis
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cuenta Verificada"
+                    android:textColor="@color/icons"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <com.pkmmte.view.CircularImageView
+            android:id="@+id/view"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/aldo"
+            app:border="true"
+            app:border_color="#EEEEEE"
+            app:border_width="4dp" />
+
+        <TextView
+            android:id="@+id/txtProfileIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@+id/view"
+            android:layout_toRightOf="@+id/view"
+            android:text="@string/icon_graduated"
+            android:textColor="@color/primary"
+            android:textSize="20sp" />
+
+        <com.chilangolabs.buddis.OwnElements.TextBuddis
+            android:id="@+id/txtProfileExperience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/txtProfileIcon"
+            android:layout_toEndOf="@+id/txtProfileIcon"
+            android:layout_toRightOf="@+id/txtProfileIcon"
+            android:text="Tutor certificado"
+            android:textColor="@color/primary"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</FrameLayout>
