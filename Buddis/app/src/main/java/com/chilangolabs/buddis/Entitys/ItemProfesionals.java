@@ -1,5 +1,7 @@
 package com.chilangolabs.buddis.Entitys;
 
+import org.json.JSONObject;
+
 /**
  * Created by gorro on 21/06/15.
  */
@@ -7,11 +9,21 @@ public class ItemProfesionals {
 
     String name, id;
     String image;
+    JSONObject json;
 
-    public ItemProfesionals(String name, String id, String image) {
+    public ItemProfesionals(String name, String id, String image, JSONObject json) {
         this.name = name;
         this.id = id;
         this.image = image;
+        this.json = json;
+    }
+
+    public JSONObject getJson() {
+        return json;
+    }
+
+    public void setJson(JSONObject json) {
+        this.json = json;
     }
 
     public String getId() {

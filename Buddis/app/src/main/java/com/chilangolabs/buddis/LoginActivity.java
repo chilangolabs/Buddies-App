@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 AccessToken accessToken = loginResult.getAccessToken();
                 String tokenStr = accessToken.getToken();
-                
+
 
             }
 

@@ -5,15 +5,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chilangolabs.buddis.Entitys.ItemListHome;
 import com.chilangolabs.buddis.Entitys.ItemProfesionals;
 import com.chilangolabs.buddis.R;
-import com.devsmart.android.ui.HorizontalListView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,7 +53,7 @@ public class AdapterListHome extends BaseAdapter {
 
     public class HolderView {
         TextView txtCode, txtName;
-        HorizontalListView horizontalListView;
+        LinearLayout horizontalListView;
     }
 
     @Override
@@ -68,7 +69,7 @@ public class AdapterListHome extends BaseAdapter {
             holder = new HolderView();
             holder.txtCode = (TextView) fila.findViewById(R.id.txtItemHomeCode);
             holder.txtName = (TextView) fila.findViewById(R.id.txtItemHomeName);
-            holder.horizontalListView = (HorizontalListView) fila.findViewById(R.id.listviewItemHome);
+            holder.horizontalListView = (LinearLayout) fila.findViewById(R.id.content_profesionals);
             fila.setTag(holder);
         } else {
             holder = (HolderView) fila.getTag();
@@ -76,24 +77,34 @@ public class AdapterListHome extends BaseAdapter {
 
         ItemListHome item = (ItemListHome) data.get(position);
         try {
-            holder.txtCode.setText(item.getJson().getString("code"));
-            holder.txtName.setText(item.getJson().getString("name"));
-            JSONArray jsonProfesionalsAr = item.getJson().getJSONArray("profesionals");
+            holder.txtCode.setText(item.getJson().getString("icon"));
+            holder.txtName.setText(item.getJson().getString("title"));
+            final JSONArray jsonProfesionalsAr = item.getJson().getJSONArray("users");
+
             for (int i = 0; i < jsonProfesionalsAr.length(); i++) {
-                itemProfesionalses.add(new ItemProfesionals(jsonProfesionalsAr.getJSONObject(i).getString("name"), jsonProfesionalsAr.getJSONObject(i).getString("id"), jsonProfesionalsAr.getJSONObject(i).getString("image")));
+                View profesionalItem = LayoutInflater.from(context).inflate(R.layout.item_profesionals, null);
+                TextView txtProfesional = (TextView) profesionalItem.findViewById(R.id.txtProfesional);
+                ImageView imgProfesional = (ImageView) profesionalItem.findViewById(R.id.imgProfesional);
+                txtProfesional.setText(jsonProfesionalsAr.getJSONObject(i).getString("name"));
+                Picasso.with(context).load("http://buddies.chilangolabs.com" + jsonProfesionalsAr.getJSONObject(i).getString("img")).placeholder(R.drawable.mario).error(R.drawable.mario);
+//                imgProfesional.setImageResource(R.drawable.mario);
+                holder.horizontalListView.addView(profesionalItem);
+                final int pos = i;
+                holder.horizontalListView.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        try {
+                            Toast.makeText(context, jsonProfesionalsAr.getJSONObject(pos).getString("id"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
-            adapterProfesional = new AdapterProfesional(context, R.layout.item_profesionals, itemProfesionalses);
-            holder.horizontalListView.setAdapter(adapterProfesional);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        holder.horizontalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(context, itemProfesionalses.get(i).getId(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
         return fila;
     }

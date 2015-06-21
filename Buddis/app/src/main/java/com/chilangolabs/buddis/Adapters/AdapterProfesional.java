@@ -2,6 +2,7 @@ package com.chilangolabs.buddis.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 
 import com.chilangolabs.buddis.Entitys.ItemProfesionals;
 import com.chilangolabs.buddis.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -56,8 +56,8 @@ public class AdapterProfesional extends BaseAdapter {
         HolderView holder = null;
 
         if (fila == null) {
-            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            fila = inflater.inflate(layoutResourceId, parent, false);
+//            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+            fila = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, null); //inflater.inflate(layoutResourceId, parent, false);
             holder = new HolderView();
             holder.txtName = (TextView) fila.findViewById(R.id.txtProfesional);
             holder.imgProfesional = (ImageView) fila.findViewById(R.id.imgProfesional);
@@ -67,8 +67,10 @@ public class AdapterProfesional extends BaseAdapter {
         }
 
         ItemProfesionals item = (ItemProfesionals) data.get(position);
-        holder.txtName.setText(item.getName());
-        Picasso.with(context).load(item.getImage()).into(holder.imgProfesional);
+        Log.e("name", item.getName());
+//        holder.txtName.setText(item.getName());
+//        holder.imgProfesional.setImageResource(R.drawable.mario);
+//        Picasso.with(context).load("http://buddies.chilangolabs.com" + item.getImage()).placeholder(R.drawable.mario).error(R.drawable.mario).into(holder.imgProfesional);
 
         return fila;
     }
