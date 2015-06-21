@@ -90,7 +90,7 @@ public class AdapterListHome extends BaseAdapter {
                 TextView txtProfesional = (TextView) profesionalItem.findViewById(R.id.txtProfesional);
                 ImageView imgProfesional = (ImageView) profesionalItem.findViewById(R.id.imgProfesional);
                 txtProfesional.setText(jsonProfesionalsAr.getJSONObject(i).getString("name"));
-                Picasso.with(context).load("http://buddies.chilangolabs.com" + jsonProfesionalsAr.getJSONObject(i).getString("img")).placeholder(R.drawable.cargando).error(R.drawable.cargando);
+                Picasso.with(context).load("http://buddies.chilangolabs.com" + jsonProfesionalsAr.getJSONObject(i).getString("img")).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(imgProfesional);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
                 layoutParams.setMargins(10, 0, 10, 0);

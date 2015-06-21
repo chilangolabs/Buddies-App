@@ -89,6 +89,17 @@
             android:textColor="@color/primary"
             android:textSize="18sp" />
 
+        <ListView
+            android:id="@+id/listUserProfileJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:divider="@color/transparent"
+            android:dividerHeight="10dp"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+
+        </ListView>
+
     </RelativeLayout>
 
 </FrameLayout>
