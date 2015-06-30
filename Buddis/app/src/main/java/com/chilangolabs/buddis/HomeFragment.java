@@ -96,6 +96,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        rq.getCache().clear();
         rq.add(jsonRequest);
 
     }

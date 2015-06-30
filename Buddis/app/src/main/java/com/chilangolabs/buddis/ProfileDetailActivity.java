@@ -104,6 +104,7 @@ public class ProfileDetailActivity extends AppCompatActivity {
             }
         });
 
+        rq.getCache().clear();
         rq.add(jsonRequest);
 
     }

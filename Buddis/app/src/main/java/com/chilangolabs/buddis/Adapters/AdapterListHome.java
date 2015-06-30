@@ -56,8 +56,10 @@ public class AdapterListHome extends BaseAdapter {
     }
 
     public class HolderView {
-        TextView txtCode, txtName;
+        TextView txtCode, txtName, txtProfesional;
+        ImageView imgProfesional;
         LinearLayout horizontalListView;
+        View profesionalItem;
     }
 
     @Override
@@ -71,6 +73,9 @@ public class AdapterListHome extends BaseAdapter {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             fila = inflater.inflate(layoutResourceId, parent, false);
             holder = new HolderView();
+            holder.profesionalItem = LayoutInflater.from(context).inflate(R.layout.item_profesionals, null);
+            holder.txtProfesional = (TextView) holder.profesionalItem.findViewById(R.id.txtProfesional);
+            holder.imgProfesional = (ImageView) holder.profesionalItem.findViewById(R.id.imgProfesional);
             holder.txtCode = (TextView) fila.findViewById(R.id.txtItemHomeCode);
             holder.txtName = (TextView) fila.findViewById(R.id.txtItemHomeName);
             holder.horizontalListView = (LinearLayout) fila.findViewById(R.id.content_profesionals);
@@ -87,16 +92,16 @@ public class AdapterListHome extends BaseAdapter {
             final JSONArray jsonProfesionalsAr = item.getJson().getJSONArray("users");
 
             for (int i = 0; i < jsonProfesionalsAr.length(); i++) {
-                View profesionalItem = LayoutInflater.from(context).inflate(R.layout.item_profesionals, null);
-                TextView txtProfesional = (TextView) profesionalItem.findViewById(R.id.txtProfesional);
-                ImageView imgProfesional = (ImageView) profesionalItem.findViewById(R.id.imgProfesional);
-                txtProfesional.setText(jsonProfesionalsAr.getJSONObject(i).getString("name"));
-                Picasso.with(context).load("http://buddies.chilangolabs.com" + jsonProfesionalsAr.getJSONObject(i).getString("img")).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(imgProfesional);
+//                View profesionalItem = LayoutInflater.from(context).inflate(R.layout.item_profesionals, null);
+//                TextView txtProfesional = (TextView) profesionalItem.findViewById(R.id.txtProfesional);
+//                ImageView imgProfesional = (ImageView) profesionalItem.findViewById(R.id.imgProfesional);
+                holder.txtProfesional.setText(jsonProfesionalsAr.getJSONObject(i).getString("name"));
+                Picasso.with(context).load("http://buddies.chilangolabs.com" + jsonProfesionalsAr.getJSONObject(i).getString("img")).placeholder(R.drawable.cargando).error(R.drawable.cargando).into(holder.imgProfesional);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
                 layoutParams.setMargins(10, 0, 10, 0);
 //                imgProfesional.setImageResource(R.drawable.mario);
-                holder.horizontalListView.addView(profesionalItem, layoutParams);
+                holder.horizontalListView.addView(holder.profesionalItem, layoutParams);
                 final int pos = i;
                 holder.horizontalListView.getChildAt(i).setOnClickListener(new View.OnClickListener() {
                     @Override
